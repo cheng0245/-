@@ -1,0 +1,60 @@
+﻿  <aside class="strategy-panel">
+    <div class="strategy-header">
+      <span class="pulse"></span> 策略建议引擎
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm1')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm1"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'优化研发部人员配比','execForm1')">确认创建任务</button><div class="exec-confirm" id="confirm1">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-high">
+      <div class="insight-priority high">⚡ 高优先级</div>
+      <div class="insight-title">优化研发部人员配比</div>
+      <div class="insight-desc">数据显示研发部人均产出同比下降 8.3%，建议将两个闲置人力从运维组调至核心产品组，预计可提升整体效率 15-20%。</div>
+      <div class="insight-meta">
+        <span>置信度 87%</span>
+        <span class="insight-impact positive">+15% 效率</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm2')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm2"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'削减 Q4 市场营销预算','execForm2')">确认创建任务</button><div class="exec-confirm" id="confirm2">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-high">
+      <div class="insight-priority high">⚡ 高优先级</div>
+      <div class="insight-title">削减 Q4 市场营销预算</div>
+      <div class="insight-desc">近两季度市场 ROI 持续走低（1.2→0.8），建议将 30% 预算转移至产品研发，历史模型显示此举可将营收提升 22%。</div>
+      <div class="insight-meta">
+        <span>置信度 82%</span>
+        <span class="insight-impact positive">+22% 营收</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm3')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm3"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'启动销售培训计划','execForm3')">确认创建任务</button><div class="exec-confirm" id="confirm3">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-mid">
+      <div class="insight-priority mid">🟡 中优先级</div>
+      <div class="insight-title">启动销售培训计划</div>
+      <div class="insight-desc">销售团队新人占比 40%，成单率低于老员工 35%。建议启动为期 6 周的导师制培训，投入产出比预计 1:4.2。</div>
+      <div class="insight-meta">
+        <span>置信度 76%</span>
+        <span class="insight-impact positive">ROI 1:4.2</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm4')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm4"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'调整客户支持排班','execForm4')">确认创建任务</button><div class="exec-confirm" id="confirm4">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-mid">
+      <div class="insight-priority mid">🟡 中优先级</div>
+      <div class="insight-title">调整客户支持排班</div>
+      <div class="insight-desc">高峰时段（14:00-17:00）响应时间超平均 2.3 倍，建议增加此时段轮值人数，预计客户满意度提升 18%。</div>
+      <div class="insight-meta">
+        <span>置信度 81%</span>
+        <span class="insight-impact positive">+18% 满意度</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm5')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm5"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'探索远程协作工具升级','execForm5')">确认创建任务</button><div class="exec-confirm" id="confirm5">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-low">
+      <div class="insight-priority low">🔵 低优先级</div>
+      <div class="insight-title">探索远程协作工具升级</div>
+      <div class="insight-desc">远程员工协作效率评分 6.8/10，建议评估新一代协作平台，预计人均可节省 2.5 小时/周。</div>
+      <div class="insight-meta">
+        <span>置信度 68%</span>
+        <span class="insight-impact positive">+2.5h/周</span>
+      </div>
+    </div>
+  </aside>

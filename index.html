@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>NexusCore — 总览仪表盘</title><link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"><link rel="stylesheet" href="common.css"></head><body data-page="dashboard"><canvas id="bg-canvas"></canvas><div class="app-container"><!-- 左侧导航 -->
+<aside class="sidebar">
+  <a href="index.html" style="text-decoration:none"><div class="logo"><div class="logo-icon"><span>N</span></div><div class="logo-text">NEXUSCORE</div></div></a>
+  <div class="nav-section">
+    <div class="nav-label">核心看板</div>
+    <a href="index.html" class="nav-item active"><span class="nav-icon">📊</span> 总览仪表盘</a>
+    <a href="profit.html" class="nav-item"><span class="nav-icon">💰</span> 盈亏分析<span class="nav-badge">3</span></a>
+    <a href="people.html" class="nav-item"><span class="nav-icon">👥</span> 人员经济</a>
+    <a href="trend.html" class="nav-item"><span class="nav-icon">📈</span> 趋势洞察</a>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">决策工具</div>
+    <a href="strategy.html" class="nav-item"><span class="nav-icon">🎯</span> 策略建议</a>
+    <a href="simulate.html" class="nav-item"><span class="nav-icon">🧪</span> 模拟推演</a>
+    <a href="report.html" class="nav-item"><span class="nav-icon">📋</span> 报告中心</a>
+  </div>
+  <a href="exec-track.html" class="nav-item" style="margin-top:auto;border-top:1px solid var(--border-glow);padding-top:16px"><span class="nav-icon">📋</span> 执行追踪</a>
+</aside><main class="main-content">
+<div class="top-bar"><h1 class="page-title">总览仪表盘</h1><div class="top-actions"><div class="time-display" id="liveTime">--</div><a href="index.html" class="btn-refresh" style="text-decoration:none">⟳ 刷新数据</a></div></div>
+<div class="kpi-row"><div class="kpi-card"><div class="kpi-label">季度总营收</div><div class="kpi-value">¥8,562<span style="font-size:18px">万</span></div><div class="kpi-change up">▲ 12.4%</div></div><div class="kpi-card"><div class="kpi-label">运营成本</div><div class="kpi-value">¥3,214<span style="font-size:18px">万</span></div><div class="kpi-change down">▼ 3.2%</div></div><div class="kpi-card"><div class="kpi-label">人均产值</div><div class="kpi-value">¥86<span style="font-size:18px">万</span></div><div class="kpi-change up">▲ 8.7%</div></div><div class="kpi-card"><div class="kpi-label">效率指数</div><div class="kpi-value">92<span style="font-size:18px">.6</span></div><div class="kpi-change up">▲ 5.1%</div></div></div>
+<div class="content-grid"><div class="panel"><div class="panel-header"><div class="panel-title"><span class="dot blue"></span>季度盈亏趋势</div><span class="panel-badge">Q1-Q4 2026</span></div><div class="chart-area" id="profitChart"></div><div class="chart-label-row" id="chartLabels"></div></div><div class="panel"><div class="panel-header"><div class="panel-title"><span class="dot magenta"></span>部门人员经济概览</div><span class="panel-badge">TOP 5</span></div><table class="data-table"><thead><tr><th>#</th><th>部门</th><th>人均产出</th><th>成本</th><th>ROI</th></tr></thead><tbody id="deptTable"></tbody></table></div></div>
+<div class="panel" style="margin-bottom:16px"><div class="panel-header"><div class="panel-title"><span class="dot blue"></span>公司效率走势</div><span class="panel-badge">月度</span></div><div class="chart-area" id="efficiencyChart" style="height:180px"></div><div class="chart-label-row" id="effLabels"></div></div>
+<div class="panel radar-panel"><div class="panel-header"><div class="panel-title"><span class="dot magenta"></span>部门综合能力雷达</div><span class="panel-badge">本月</span></div><div class="radar-container"><div class="radar-canvas-wrap"><canvas id="radarCanvas" width="340" height="340"></canvas></div><div class="radar-legend"><div class="radar-legend-item"><span class="radar-legend-dot current"></span> 当前水平</div><div class="radar-legend-item"><span class="radar-legend-dot target"></span> 目标水平</div><div class="radar-legend-item"><span class="radar-legend-dot industry"></span> 行业均值</div></div></div></div>
+</main>  <aside class="strategy-panel">
+    <div class="strategy-header">
+      <span class="pulse"></span> 策略建议引擎
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm1')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm1"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'优化研发部人员配比','execForm1')">确认创建任务</button><div class="exec-confirm" id="confirm1">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-high">
+      <div class="insight-priority high">⚡ 高优先级</div>
+      <div class="insight-title">优化研发部人员配比</div>
+      <div class="insight-desc">数据显示研发部人均产出同比下降 8.3%，建议将两个闲置人力从运维组调至核心产品组，预计可提升整体效率 15-20%。</div>
+      <div class="insight-meta">
+        <span>置信度 87%</span>
+        <span class="insight-impact positive">+15% 效率</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm2')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm2"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'削减 Q4 市场营销预算','execForm2')">确认创建任务</button><div class="exec-confirm" id="confirm2">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-high">
+      <div class="insight-priority high">⚡ 高优先级</div>
+      <div class="insight-title">削减 Q4 市场营销预算</div>
+      <div class="insight-desc">近两季度市场 ROI 持续走低（1.2→0.8），建议将 30% 预算转移至产品研发，历史模型显示此举可将营收提升 22%。</div>
+      <div class="insight-meta">
+        <span>置信度 82%</span>
+        <span class="insight-impact positive">+22% 营收</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm3')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm3"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'启动销售培训计划','execForm3')">确认创建任务</button><div class="exec-confirm" id="confirm3">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-mid">
+      <div class="insight-priority mid">🟡 中优先级</div>
+      <div class="insight-title">启动销售培训计划</div>
+      <div class="insight-desc">销售团队新人占比 40%，成单率低于老员工 35%。建议启动为期 6 周的导师制培训，投入产出比预计 1:4.2。</div>
+      <div class="insight-meta">
+        <span>置信度 76%</span>
+        <span class="insight-impact positive">ROI 1:4.2</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm4')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm4"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'调整客户支持排班','execForm4')">确认创建任务</button><div class="exec-confirm" id="confirm4">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-mid">
+      <div class="insight-priority mid">🟡 中优先级</div>
+      <div class="insight-title">调整客户支持排班</div>
+      <div class="insight-desc">高峰时段（14:00-17:00）响应时间超平均 2.3 倍，建议增加此时段轮值人数，预计客户满意度提升 18%。</div>
+      <div class="insight-meta">
+        <span>置信度 81%</span>
+        <span class="insight-impact positive">+18% 满意度</span>
+      </div>
+      <button class="btn-execute" onclick="toggleExecForm(event,'execForm5')">⚡ 转为执行任务</button>
+      <div class="exec-form" id="execForm5"><label>责任人</label><input type="text" placeholder="输入姓名..."><label>截止日期</label><input type="date"><label>优先级</label><select><option>高</option><option selected>中</option><option>低</option></select><button class="btn-submit" onclick="submitTask(event,'探索远程协作工具升级','execForm5')">确认创建任务</button><div class="exec-confirm" id="confirm5">✓ 任务已创建</div></div>
+    </div>
+    <div class="insight-card priority-low">
+      <div class="insight-priority low">🔵 低优先级</div>
+      <div class="insight-title">探索远程协作工具升级</div>
+      <div class="insight-desc">远程员工协作效率评分 6.8/10，建议评估新一代协作平台，预计人均可节省 2.5 小时/周。</div>
+      <div class="insight-meta">
+        <span>置信度 68%</span>
+        <span class="insight-impact positive">+2.5h/周</span>
+      </div>
+    </div>
+  </aside></div><script src="common.js"></script><script>
+updateTime();setInterval(updateTime,1000);
+(function(){const d=[{l:'1月',v:620},{l:'2月',v:580},{l:'3月',v:710},{l:'4月',v:540},{l:'5月',v:390},{l:'6月',v:480},{l:'7月',v:670},{l:'8月',v:720},{l:'9月',v:560},{l:'10月',v:850},{l:'11月',v:920},{l:'12月',v:1060}];const mx=Math.max(...d.map(x=>x.v));const c=document.getElementById('profitChart'),lb=document.getElementById('chartLabels');d.forEach(x=>{const b=document.createElement('div');b.className='chart-bar profit';b.style.height=(x.v/mx*100)+'%';b.title=x.l+': ¥'+x.v+'万';c.appendChild(b);const l=document.createElement('span');l.className='chart-label';l.textContent=x.l;lb.appendChild(l)})})();
+(function(){const d=[{r:1,de:'产品研发部',o:'¥128万',c:'¥76万',ro:'1.68',t:true},{r:2,de:'市场运营部',o:'¥95万',c:'¥62万',ro:'1.53',t:true},{r:3,de:'销售部',o:'¥82万',c:'¥45万',ro:'1.82',t:true},{r:4,de:'客户成功部',o:'¥71万',c:'¥48万',ro:'1.48',t:false},{r:5,de:'行政管理部',o:'¥53万',c:'¥41万',ro:'1.29',t:false}];const t=document.getElementById('deptTable');d.forEach(x=>{const tr=document.createElement('tr');tr.innerHTML='<td><span class="rank-badge '+(x.t?'top':'')+'">'+x.r+'</span></td><td>'+x.de+'</td><td>'+x.o+'</td><td>'+x.c+'</td><td class="val-profit">'+x.ro+'</td>';t.appendChild(tr)})})();
+(function(){const d=[{l:'1月',v:78},{l:'2月',v:75},{l:'3月',v:82},{l:'4月',v:80},{l:'5月',v:85},{l:'6月',v:88},{l:'7月',v:84},{l:'8月',v:90},{l:'9月',v:87},{l:'10月',v:92},{l:'11月',v:95},{l:'12月',v:97}];const c=document.getElementById('efficiencyChart'),lb=document.getElementById('effLabels');d.forEach((x,i)=>{const b=document.createElement('div');b.className='chart-bar profit';const h=x.v/100*100;b.style.height=h+'%';b.style.background=i>=9?'linear-gradient(180deg,var(--accent-cyan),rgba(0,229,255,0.2))':i>=6?'linear-gradient(180deg,var(--accent-blue),rgba(77,166,255,0.2))':'linear-gradient(180deg,var(--accent-magenta),rgba(224,64,251,0.2))';b.title=x.l+': '+x.v;c.appendChild(b);const l=document.createElement('span');l.className='chart-label';l.textContent=x.l;lb.appendChild(l)})})();
+</script></body></html>
